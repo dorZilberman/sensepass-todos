@@ -1,0 +1,15 @@
+<div class="card">
+    <h2>Todo List:</h2>
+    <div class="todo-list">
+        <div *ngFor="let todo of todos" class="todo-item">
+            <app-todo [todo]="todo" (onTodoDeletion)="deleteTodo(todo.id)"
+                (onToggleComplete)="toggleTodoComplete($event)"
+                (onUpdateTitle)="updateTodo($event)"></app-todo>
+        </div>
+    </div>
+
+    <form (ngSubmit)="createTodo()" class="add-todo-form">
+        <input type="text" placeholder="Enter a new todo" [(ngModel)]="newTodoTitle" name="newTodoTitle" required>
+        <button id="createTodoButton" type="submit">Create Todo</button>
+    </form>
+</div>

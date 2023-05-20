@@ -1,0 +1,25 @@
+<div class="todo-item">
+    <ng-container *ngIf="!editMode; else editTemplate">
+        <input type="checkbox" [checked]="todo.isCompleted" (change)="toggleCompleted()">
+        <span class="title">{{ todo.title }}</span>
+        <button id="editButton" (click)="enterEditMode()">Edit</button>
+        <button id="deleteButton" (click)="delete()">Delete</button>
+    </ng-container>
+
+    <!-- <ng-template #editTemplate>
+        <input type="text" [(ngModel)]="editedTitle">
+        <button id="saveButton" (click)="saveEdit()">Save</button>
+        <button id="cancelButton" (click)="cancelEdit()">Cancel</button>
+    </ng-template> -->
+
+
+    <ng-template #editTemplate>
+        <div class="edit-container">
+          <input type="text" [(ngModel)]="editedTitle" class="edit-input">
+          <div class="edit-buttons">
+            <button id="saveButton" (click)="saveEdit()">Save</button>
+            <button id="cancelButton" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </div>
+      </ng-template>
+</div>
